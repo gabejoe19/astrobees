@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    Rigidbody2D body;
+    private Rigidbody2D rb;
 
     float horizontal;
     float vertical;
@@ -14,7 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class PlayerBehaviour : MonoBehaviour
             vertical *= moveLimiter;
         }
 
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        rb.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 
     void Movement()
@@ -44,7 +44,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     void GrabGenes()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
 
+        }
     }
 
     
