@@ -6,6 +6,11 @@ public class FlowerBehaviour : MonoBehaviour
 {
     private GameObject cc; //canvas holding traits
 
+    public int[][] colorTraits;
+    public int[][] stemTraits;
+    public int[][] petalTraits;
+    public int[][] thornsTraits;
+
     private void Start()
     {
         cc = gameObject.transform.GetChild(0).gameObject;

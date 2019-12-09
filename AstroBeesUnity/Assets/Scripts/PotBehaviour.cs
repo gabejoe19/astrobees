@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PotBehaviour : MonoBehaviour
 {
+    public int[][] colorTraits;
+    public int[][] stemTraits;
+    public int[][] petalTraits;
+    public int[][] thornsTraits;
+
     // Start is called before the first frame update
     void Start()
     {

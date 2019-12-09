@@ -12,6 +12,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
+    public int[][] colorTraits;
+    public int[][] stemTraits;
+    public int[][] petalTraits;
+    public int[][] thornsTraits;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
