@@ -17,7 +17,7 @@ public class PotBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,51 +26,202 @@ public class PotBehaviour : MonoBehaviour
         
     }
 
-    void PunnettSquare(string[,] traits, string[,] prevTraits)
+    void PunnettSquare()
     {
         string[,] square = new string[2, 2];
-        string[,] results = new string[4, 2];
-        
+        string[,] squareResults = new string[4, 2];
+        string[,] finalResults = new string[4, 2];
+
+        //COLOR
+
         //first set of traits
-        square[0, 0] = traits[0, 0];
-        square[0, 1] = traits[0, 1];
+        square[0, 0] = colorTraits[0, 0];
+        square[0, 1] = colorTraits[0, 1];
         //second set of traits
-        square[1, 0] = prevTraits[0, 0];
-        square[1, 1] = prevTraits[0, 1];
+        square[1, 0] = prevColor[0, 0];
+        square[1, 1] = prevColor[0, 1];
 
         //result 1
-        results[0, 0] = square[0, 0];
-        results[0, 1] = square[1, 0];
+        squareResults[0, 0] = square[0, 0];
+        squareResults[0, 1] = square[1, 0];
         //result 2
-        results[1, 0] = square[0, 1];
-        results[1, 1] = square[1, 0];
+        squareResults[1, 0] = square[0, 1];
+        squareResults[1, 1] = square[1, 0];
         //result 3
-        results[2, 0] = square[0, 0];
-        results[2, 1] = square[1, 1];
+        squareResults[2, 0] = square[0, 0];
+        squareResults[2, 1] = square[1, 1];
         //result 4
-        results[3, 0] = square[0, 1];
-        results[3, 1] = square[1, 1];
+        squareResults[3, 0] = square[0, 1];
+        squareResults[3, 1] = square[1, 1];
 
         int winner = Random.Range(0, 100);
 
-        if(winner <= 25)
+        if(winner <= 25) //result 1
         {
-
+            finalResults[0, 0] = squareResults[0, 0];
+            finalResults[0, 1] = squareResults[0, 1];
         }
         
-        else if(winner <= 50 && winner > 25)
+        else if(winner <= 50 && winner > 25) //result 2
         {
-
+            finalResults[0, 0] = squareResults[1, 0];
+            finalResults[0, 1] = squareResults[1, 1];
         }
 
-        else if(winner <= 75 && winner > 50)
+        else if(winner <= 75 && winner > 50) //result 3
         {
-
+            finalResults[0, 0] = squareResults[2, 0];
+            finalResults[0, 1] = squareResults[2, 1];
         }
 
-        else if(winner <= 100 && winner > 75)
+        else if(winner <= 100 && winner > 75) //result 4
         {
-            
+            finalResults[0, 0] = squareResults[3, 0];
+            finalResults[0, 1] = squareResults[3, 1];
+        }
+
+        //STEM
+
+        //first set of traits
+        square[0, 0] = stemTraits[0, 0];
+        square[0, 1] = stemTraits[0, 1];
+        //second set of traits
+        square[1, 0] = prevStem[0, 0];
+        square[1, 1] = prevStem[0, 1];
+
+        //result 1
+        squareResults[0, 0] = square[0, 0];
+        squareResults[0, 1] = square[1, 0];
+        //result 2
+        squareResults[1, 0] = square[0, 1];
+        squareResults[1, 1] = square[1, 0];
+        //result 3
+        squareResults[2, 0] = square[0, 0];
+        squareResults[2, 1] = square[1, 1];
+        //result 4
+        squareResults[3, 0] = square[0, 1];
+        squareResults[3, 1] = square[1, 1];
+
+        winner = Random.Range(0, 100);
+
+        if (winner <= 25) //result 1
+        {
+            finalResults[1, 0] = squareResults[0, 0];
+            finalResults[1, 1] = squareResults[0, 1];
+        }
+
+        else if (winner <= 50 && winner > 25) //result 2
+        {
+            finalResults[1, 0] = squareResults[1, 0];
+            finalResults[1, 1] = squareResults[1, 1];
+        }
+
+        else if (winner <= 75 && winner > 50) //result 3
+        {
+            finalResults[1, 0] = squareResults[2, 0];
+            finalResults[1, 1] = squareResults[2, 1];
+        }
+
+        else if (winner <= 100 && winner > 75) //result 4
+        {
+            finalResults[1, 0] = squareResults[3, 0];
+            finalResults[1, 1] = squareResults[3, 1];
+        }
+
+        //PETAL
+
+        //first set of traits
+        square[0, 0] = petalTraits[0, 0];
+        square[0, 1] = petalTraits[0, 1];
+        //second set of traits
+        square[1, 0] = prevPetal[0, 0];
+        square[1, 1] = prevPetal[0, 1];
+
+        //result 1
+        squareResults[0, 0] = square[0, 0];
+        squareResults[0, 1] = square[1, 0];
+        //result 2
+        squareResults[1, 0] = square[0, 1];
+        squareResults[1, 1] = square[1, 0];
+        //result 3
+        squareResults[2, 0] = square[0, 0];
+        squareResults[2, 1] = square[1, 1];
+        //result 4
+        squareResults[3, 0] = square[0, 1];
+        squareResults[3, 1] = square[1, 1];
+
+        winner = Random.Range(0, 100);
+
+        if (winner <= 25) //result 1
+        {
+            finalResults[2, 0] = squareResults[0, 0];
+            finalResults[2, 1] = squareResults[0, 1];
+        }
+
+        else if (winner <= 50 && winner > 25) //result 2
+        {
+            finalResults[2, 0] = squareResults[1, 0];
+            finalResults[2, 1] = squareResults[1, 1];
+        }
+
+        else if (winner <= 75 && winner > 50) //result 3
+        {
+            finalResults[2, 0] = squareResults[2, 0];
+            finalResults[2, 1] = squareResults[2, 1];
+        }
+
+        else if (winner <= 100 && winner > 75) //result 4
+        {
+            finalResults[2, 0] = squareResults[3, 0];
+            finalResults[2, 1] = squareResults[3, 1];
+        }
+
+        //THORN
+
+        //first set of traits
+        square[0, 0] = thornsTraits[0, 0];
+        square[0, 1] = thornsTraits[0, 1];
+        //second set of traits
+        square[1, 0] = prevThorns[0, 0];
+        square[1, 1] = prevThorns[0, 1];
+
+        //result 1
+        squareResults[0, 0] = square[0, 0];
+        squareResults[0, 1] = square[1, 0];
+        //result 2
+        squareResults[1, 0] = square[0, 1];
+        squareResults[1, 1] = square[1, 0];
+        //result 3
+        squareResults[2, 0] = square[0, 0];
+        squareResults[2, 1] = square[1, 1];
+        //result 4
+        squareResults[3, 0] = square[0, 1];
+        squareResults[3, 1] = square[1, 1];
+
+        winner = Random.Range(0, 100);
+
+        if (winner <= 25) //result 1
+        {
+            finalResults[3, 0] = squareResults[0, 0];
+            finalResults[3, 1] = squareResults[0, 1];
+        }
+
+        else if (winner <= 50 && winner > 25) //result 2
+        {
+            finalResults[3, 0] = squareResults[1, 0];
+            finalResults[3, 1] = squareResults[1, 1];
+        }
+
+        else if (winner <= 75 && winner > 50) //result 3
+        {
+            finalResults[3, 0] = squareResults[2, 0];
+            finalResults[3, 1] = squareResults[2, 1];
+        }
+
+        else if (winner <= 100 && winner > 75) //result 4
+        {
+            finalResults[3, 0] = squareResults[3, 0];
+            finalResults[3, 1] = squareResults[3, 1];
         }
     }
 }
