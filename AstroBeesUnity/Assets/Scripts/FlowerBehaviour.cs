@@ -6,14 +6,15 @@ public class FlowerBehaviour : MonoBehaviour
 {
     private GameObject cc; //canvas holding traits
 
-    public int[][] colorTraits;
-    public int[][] stemTraits;
-    public int[][] petalTraits;
-    public int[][] thornsTraits;
+    public string[,] colorTraits = new string[1,2];
+    public string[,] stemTraits = new string[1, 2];
+    public string[,] petalTraits = new string[1, 2];
+    public string[,] thornsTraits = new string[1, 2];
 
     private void Start()
     {
         cc = gameObject.transform.GetChild(0).gameObject;
+        colorTraits[0, 0] = "C";
     }
 
     private void OnTriggerEnter2D(Collider2D col)

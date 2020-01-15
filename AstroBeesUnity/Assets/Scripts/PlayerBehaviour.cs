@@ -12,10 +12,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
-    public int[][] colorTraits;
-    public int[][] stemTraits;
-    public int[][] petalTraits;
-    public int[][] thornsTraits;
+    public string[,] colorTraits = new string[1, 2];
+    public string[,] stemTraits = new string[1, 2];
+    public string[,] petalTraits = new string[1, 2];
+    public string[,] thornsTraits = new string[1, 2];
 
     void Start()
     {
@@ -47,13 +47,30 @@ public class PlayerBehaviour : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical"); // -1 is down
     }
 
-    void GrabGenes()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
+    //void GrabGenes()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.Space))
+    //    {
 
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("here");
+        if (col.gameObject.CompareTag("flower"))
+        {
+            Debug.Log("here2");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("here3");
+                colorTraits = col.GetComponent<FlowerBehaviour>().colorTraits;
+                stemTraits = col.GetComponent<FlowerBehaviour>().stemTraits;
+                petalTraits = col.GetComponent<FlowerBehaviour>().petalTraits;
+                thornsTraits = col.GetComponent<FlowerBehaviour>().thornsTraits;
+                Debug.Log(colorTraits);
+            }
         }
     }
 
-    
 }

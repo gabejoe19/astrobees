@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PotBehaviour : MonoBehaviour
 {
-    public string[,] colorTraits;
-    public string[,] stemTraits;
-    public string[,] petalTraits;
-    public string[,] thornsTraits;
+    public string[,] colorTraits = new string[1, 2];
+    public string[,] stemTraits = new string[1, 2];
+    public string[,] petalTraits = new string[1, 2];
+    public string[,] thornsTraits = new string[1, 2];
 
-    public string[,] prevColor;
-    public string[,] prevStem;
-    public string[,] prevPetal;
-    public string[,] prevThorns;
+    public string[,] prevColor = new string[1, 2];
+    public string[,] prevStem = new string[1, 2];
+    public string[,] prevPetal = new string[1, 2];
+    public string[,] prevThorns = new string[1, 2];
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class PotBehaviour : MonoBehaviour
     {
         string[,] square = new string[2, 2];
         string[,] squareResults = new string[4, 2];
-        string[,] finalResults = new string[4, 2];
+        //string[,] finalResults = new string[4, 2];
 
         //COLOR
 
@@ -58,26 +58,26 @@ public class PotBehaviour : MonoBehaviour
 
         if(winner <= 25) //result 1
         {
-            finalResults[0, 0] = squareResults[0, 0];
-            finalResults[0, 1] = squareResults[0, 1];
+            prevColor[0, 0] = squareResults[0, 0];
+            prevColor[0, 1] = squareResults[0, 1];
         }
         
         else if(winner <= 50 && winner > 25) //result 2
         {
-            finalResults[0, 0] = squareResults[1, 0];
-            finalResults[0, 1] = squareResults[1, 1];
+            prevColor[0, 0] = squareResults[1, 0];
+            prevColor[0, 1] = squareResults[1, 1];
         }
 
         else if(winner <= 75 && winner > 50) //result 3
         {
-            finalResults[0, 0] = squareResults[2, 0];
-            finalResults[0, 1] = squareResults[2, 1];
+            prevColor[0, 0] = squareResults[2, 0];
+            prevColor[0, 1] = squareResults[2, 1];
         }
 
         else if(winner <= 100 && winner > 75) //result 4
         {
-            finalResults[0, 0] = squareResults[3, 0];
-            finalResults[0, 1] = squareResults[3, 1];
+            prevColor[0, 0] = squareResults[3, 0];
+            prevColor[0, 1] = squareResults[3, 1];
         }
 
         //STEM
@@ -106,26 +106,26 @@ public class PotBehaviour : MonoBehaviour
 
         if (winner <= 25) //result 1
         {
-            finalResults[1, 0] = squareResults[0, 0];
-            finalResults[1, 1] = squareResults[0, 1];
+            prevStem[0, 0] = squareResults[0, 0];
+            prevStem[0, 1] = squareResults[0, 1];
         }
 
         else if (winner <= 50 && winner > 25) //result 2
         {
-            finalResults[1, 0] = squareResults[1, 0];
-            finalResults[1, 1] = squareResults[1, 1];
+            prevStem[0, 0] = squareResults[1, 0];
+            prevStem[0, 1] = squareResults[1, 1];
         }
 
         else if (winner <= 75 && winner > 50) //result 3
         {
-            finalResults[1, 0] = squareResults[2, 0];
-            finalResults[1, 1] = squareResults[2, 1];
+            prevStem[0, 0] = squareResults[2, 0];
+            prevStem[0, 1] = squareResults[2, 1];
         }
 
         else if (winner <= 100 && winner > 75) //result 4
         {
-            finalResults[1, 0] = squareResults[3, 0];
-            finalResults[1, 1] = squareResults[3, 1];
+            prevStem[0, 0] = squareResults[3, 0];
+            prevStem[0, 1] = squareResults[3, 1];
         }
 
         //PETAL
@@ -154,26 +154,26 @@ public class PotBehaviour : MonoBehaviour
 
         if (winner <= 25) //result 1
         {
-            finalResults[2, 0] = squareResults[0, 0];
-            finalResults[2, 1] = squareResults[0, 1];
+            prevPetal[0, 0] = squareResults[0, 0];
+            prevPetal[0, 1] = squareResults[0, 1];
         }
 
         else if (winner <= 50 && winner > 25) //result 2
         {
-            finalResults[2, 0] = squareResults[1, 0];
-            finalResults[2, 1] = squareResults[1, 1];
+            prevPetal[0, 0] = squareResults[1, 0];
+            prevPetal[0, 1] = squareResults[1, 1];
         }
 
         else if (winner <= 75 && winner > 50) //result 3
         {
-            finalResults[2, 0] = squareResults[2, 0];
-            finalResults[2, 1] = squareResults[2, 1];
+            prevPetal[0, 0] = squareResults[2, 0];
+            prevPetal[0, 1] = squareResults[2, 1];
         }
 
         else if (winner <= 100 && winner > 75) //result 4
         {
-            finalResults[2, 0] = squareResults[3, 0];
-            finalResults[2, 1] = squareResults[3, 1];
+            prevPetal[0, 0] = squareResults[3, 0];
+            prevPetal[0, 1] = squareResults[3, 1];
         }
 
         //THORN
@@ -202,26 +202,28 @@ public class PotBehaviour : MonoBehaviour
 
         if (winner <= 25) //result 1
         {
-            finalResults[3, 0] = squareResults[0, 0];
-            finalResults[3, 1] = squareResults[0, 1];
+            prevThorns[0, 0] = squareResults[0, 0];
+            prevThorns[0, 1] = squareResults[0, 1];
         }
 
         else if (winner <= 50 && winner > 25) //result 2
         {
-            finalResults[3, 0] = squareResults[1, 0];
-            finalResults[3, 1] = squareResults[1, 1];
+            prevThorns[0, 0] = squareResults[1, 0];
+            prevThorns[0, 1] = squareResults[1, 1];
         }
 
         else if (winner <= 75 && winner > 50) //result 3
         {
-            finalResults[3, 0] = squareResults[2, 0];
-            finalResults[3, 1] = squareResults[2, 1];
+            prevThorns[0, 0] = squareResults[2, 0];
+            prevThorns[0, 1] = squareResults[2, 1];
         }
 
         else if (winner <= 100 && winner > 75) //result 4
         {
-            finalResults[3, 0] = squareResults[3, 0];
-            finalResults[3, 1] = squareResults[3, 1];
+            prevThorns[0, 0] = squareResults[3, 0];
+            prevThorns[0, 1] = squareResults[3, 1];
         }
+
+        //use prev traits to create the new flower in the next pot
     }
 }
