@@ -17,6 +17,9 @@ public class PlayerBehaviour : MonoBehaviour
     public string[,] petalTraits = new string[1, 2];
     public string[,] thornsTraits = new string[1, 2];
 
+    private bool onFlower = false;
+    private GameObject flower;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,6 +29,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         Movement();
+        GrabGenes();
     }
 
     void FixedUpdate()
@@ -47,13 +51,18 @@ public class PlayerBehaviour : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical"); // -1 is down
     }
 
-    //void GrabGenes()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.Space))
-    //    {
-
-    //    }
-    //}
+    void GrabGenes()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && onFlower == true)
+        {
+            Debug.Log("here3");
+            colorTraits = flower.GetComponent<FlowerBehaviour>().colorTraits;
+            stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
+            petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
+            thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
+            Debug.Log(colorTraits[0,0]);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -61,16 +70,16 @@ public class PlayerBehaviour : MonoBehaviour
         if (col.gameObject.CompareTag("flower"))
         {
             Debug.Log("here2");
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("here3");
-                colorTraits = col.GetComponent<FlowerBehaviour>().colorTraits;
-                stemTraits = col.GetComponent<FlowerBehaviour>().stemTraits;
-                petalTraits = col.GetComponent<FlowerBehaviour>().petalTraits;
-                thornsTraits = col.GetComponent<FlowerBehaviour>().thornsTraits;
-                Debug.Log(colorTraits);
-            }
+            onFlower = true;
+            flower = col.gameObject;
         }
     }
 
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("flower"))
+        {
+            onFlower = false;
+        }
+    }
 }
