@@ -20,6 +20,9 @@ public class PlayerBehaviour : MonoBehaviour
     private bool onFlower = false;
     private GameObject flower;
 
+    private bool onPot = false;
+    private GameObject pot;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Movement();
         GrabGenes();
+        GiveGenes();
     }
 
     void FixedUpdate()
@@ -55,23 +59,39 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && onFlower == true)
         {
-            Debug.Log("here3");
+
             colorTraits = flower.GetComponent<FlowerBehaviour>().colorTraits;
             stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
             petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
             thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
-            Debug.Log(colorTraits[0,0]);
+            Debug.Log(thornsTraits[0,0]);
+        }
+    }
+
+    void GiveGenes()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && onPot == true)
+        {
+            pot.GetComponent<PotBehaviour>().colorTraits = colorTraits;
+            pot.GetComponent<PotBehaviour>().stemTraits = stemTraits;
+            pot.GetComponent<PotBehaviour>().petalTraits = petalTraits;
+            pot.GetComponent<PotBehaviour>().thornsTraits = thornsTraits;
+            pot.GetComponent<PotBehaviour>().PunnettSquare();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("here");
         if (col.gameObject.CompareTag("flower"))
         {
-            Debug.Log("here2");
             onFlower = true;
             flower = col.gameObject;
+        }
+
+        if (col.gameObject.CompareTag("pot"))
+        {
+            onPot = true;
+            pot = col.gameObject;
         }
     }
 
@@ -80,6 +100,11 @@ public class PlayerBehaviour : MonoBehaviour
         if (col.gameObject.CompareTag("flower"))
         {
             onFlower = false;
+        }
+
+        if (col.gameObject.CompareTag("pot"))
+        {
+            onPot = false;
         }
     }
 }

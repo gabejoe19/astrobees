@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public string[,] petalTarget = new string[1, 2];
     public string[,] thornsTarget = new string[1, 2];
 
+    MyRandom rand = new MyRandom();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +31,13 @@ public class GameManager : MonoBehaviour
 
     void GenerateTargetFlower()
     {
-        MyRandom rand = new MyRandom();
+        //MyRandom rand = new MyRandom();
         int trait;
 
         //find more efficent way of assigning random traits
         //COLOR
-        trait = rand.Next(1, 3);
+        rand.Reset();
+        trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
 
 
         //STEM
-        trait = rand.Next(1, 3);
+        trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
@@ -80,7 +83,7 @@ public class GameManager : MonoBehaviour
 
 
         //PETAL
-        trait = rand.Next(1, 3);
+        trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
@@ -103,7 +106,7 @@ public class GameManager : MonoBehaviour
 
 
         //THORNS
-        trait = rand.Next(1, 3);
+        trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
@@ -122,29 +125,32 @@ public class GameManager : MonoBehaviour
             thornsTarget[0, 0] = "t";
             thornsTarget[0, 1] = "t";
         }
+        rand.Reset();
     }
 
     void FlowerSpawning()
     {
         int[] numCheck = new int[numFlowers]; //numFlowers is the amount of flowers that should be spawned
-        MyRandom rand = new MyRandom();
+        MyRandom randLoc = new MyRandom();
 
         for(int i = 0; i < numFlowers; i++)
         {
-            CreateFlower(rand.Next(0, flowerSpawns.Length));
+            rand.Reset();
+            CreateFlower(randLoc.Next(0, flowerSpawns.Length));
         }
     }
 
     void CreateFlower(int loc)
     {
-        MyRandom rand = new MyRandom();
+        //MyRandom rand = new MyRandom();
         int trait;
 
         GameObject flower = Instantiate(flowerPrefab, flowerSpawns[loc].transform.position, Quaternion.identity);
 
         //find more efficent way of assigning random traits
         //COLOR
-        trait = rand.Next(1, 3);
+        rand.Reset();
+        trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
@@ -167,7 +173,7 @@ public class GameManager : MonoBehaviour
 
 
         //STEM
-        trait = rand.Next(1, 3);
+        trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
@@ -190,7 +196,7 @@ public class GameManager : MonoBehaviour
 
 
         //PETAL
-        trait = rand.Next(1, 3);
+        trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
@@ -213,7 +219,7 @@ public class GameManager : MonoBehaviour
 
 
         //THORNS
-        trait = rand.Next(1, 3);
+        trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
@@ -232,6 +238,13 @@ public class GameManager : MonoBehaviour
             flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 0] = "t";
             flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 1] = "t";
         }
+        rand.Reset();
+        StartCoroutine("WaitTime");
+    }
+
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(.1f);
     }
 
     public class MyRandom : System.Random
